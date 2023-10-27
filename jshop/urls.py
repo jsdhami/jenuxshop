@@ -13,6 +13,6 @@ urlpatterns = [
     path("checkout", views.checkout, name="checkout"),
     path("shop", views.shop, name="shop"),
     path("contact-us", views.contact_us, name="contact-us"),
-    
+    path("logout", views.logoutPage, name="logout"),
     
 ]

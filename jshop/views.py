@@ -2,27 +2,39 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required, user_passes_test
 
+
+def user_is_logged_out(user):
+    return not user.is_authenticated
+
+
+@login_required(login_url='login')
 def index(request):
     # return HttpResponse("Hello, world. You're at the polls index.")
-
     return render(request, 'index.html')
 
 
-def loginPage(request): 
-    if request.method=='POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('/') 
-        else:
-            HttpResponse("don't matched password and username")
-    
-    return render(request, 'login.html')
+def logoutPage(request):
+    logout(request)
+    return redirect('login')
 
+@user_passes_test(user_is_logged_out, login_url='index')
+def loginPage(request): 
+        if request.method=='POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/') 
+            else:
+                HttpResponse("don't matched password and username")
+        
+        return render(request, 'login.html')
+    
+@user_passes_test(user_is_logged_out, login_url='index')
 def signupPage(request):
     if request.method== 'POST':
         username = request.POST.get('username')
@@ -31,7 +43,6 @@ def signupPage(request):
         my_user = User.objects.create_user(username, email, password)
         my_user.save()
         return redirect('login')
-    
     
     return render(request, 'signup.html')
 
@@ -42,7 +53,7 @@ def product_details(request):
 
 def foferror(request):
     
-    return render(request, '404.html')
+   return render(request, '404.html')
 
 def blog(request):
     
@@ -57,7 +68,6 @@ def cart(request):
     
     return render(request, 'cart.html')
 
-
 def checkout(request):
     
     return render(request, 'checkout.html')
@@ -69,3 +79,9 @@ def shop(request):
 def contact_us(request):
     
     return render(request, 'contact-us.html')
+
+
+
+  
+    
+   
