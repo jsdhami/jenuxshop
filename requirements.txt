@@ -1,0 +1,17 @@
+asgiref==3.5.2
+certifi==2023.7.22
+distlib==0.3.7
+Django==4.1.1
+django-ckeditor==6.5.1
+django-jazzmin==2.5.0
+django-js-asset==2.0.0
+filelock==3.12.2
+Pillow==9.2.0
+pipenv==2023.7.23
+platformdirs==3.10.0
+psycopg2-binary==2.9.7
+setuptools==68.1.0
+sqlparse==0.4.2
+tzdata==2023.3
+virtualenv==20.24.3
+virtualenv-clone==0.5.7
