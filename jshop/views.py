@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-
+from django.contrib.auth import authenticate, login
 
 def index(request):
     # return HttpResponse("Hello, world. You're at the polls index.")
@@ -10,11 +10,20 @@ def index(request):
     return render(request, 'index.html')
 
 
-def login(request):
+def loginPage(request): 
+    if request.method=='POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/') 
+        else:
+            HttpResponse("don't matched password and username")
     
     return render(request, 'login.html')
 
-def signup(request):
+def signupPage(request):
     if request.method== 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')
