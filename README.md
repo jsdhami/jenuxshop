@@ -20,7 +20,8 @@ python -m pip install django
 python -m django --version
 ``` 
 
-To run the project locally and start using jenuxshop, follow these steps:
+### To run the project locally and start using jenuxshop, follow these steps:
+
 After forking repo. in personal github account.........
 
 1. Clone the repository:
