@@ -10,7 +10,7 @@ def user_is_logged_out(user):
     return not user.is_authenticated
 
 
-@login_required(login_url='login')
+
 def index(request):
     # return HttpResponse("Hello, world. You're at the polls index.")
     return render(request, 'index.html')
@@ -18,7 +18,12 @@ def index(request):
 
 def logoutPage(request):
     logout(request)
-    return redirect('login')
+    now_page = request.GET.get('next')
+    if now_page:
+        return redirect(now_page)
+    else:
+        return redirect('index')
+    
 
 @user_passes_test(user_is_logged_out, login_url='index')
 def loginPage(request): 
@@ -26,12 +31,15 @@ def loginPage(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(request, username=username, password=password)
+            next_url = request.GET.get('next')
             if user is not None:
                 login(request, user)
-                return redirect('/') 
+                if next_url:
+                    return redirect(next_url)
+                else:
+                    return redirect('index')                   
             else:
                 HttpResponse("don't matched password and username")
-        
         return render(request, 'login.html')
     
 @user_passes_test(user_is_logged_out, login_url='index')
@@ -68,6 +76,7 @@ def cart(request):
     
     return render(request, 'cart.html')
 
+@login_required(login_url='login')
 def checkout(request):
     
     return render(request, 'checkout.html')
