@@ -36,10 +36,9 @@ def loginPage(request):
                 login(request, user)
                 if next_url:
                     return redirect(next_url)
-                else:
-                    return redirect('index')                   
+                                   
             else:
-                HttpResponse("don't matched password and username")
+                return HttpResponse("don't matched password and username")
         return render(request, 'login.html')
     
 @user_passes_test(user_is_logged_out, login_url='index')
