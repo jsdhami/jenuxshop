@@ -2,6 +2,8 @@
 
 JenuxShop is a leading and innovative e-commerce platform in Nepal, dedicated to providing an exceptional online shopping experience to customers across the country. Established with a vision to revolutionize the way people shop, JenuxShop combines cutting-edge technology, a diverse product range, and a commitment to customer satisfaction.
 
+![JenuxShop](https://github.com/jsdhami/jenuxshop/assets/139155991/924c501f-942a-4569-86ff-a5ec33412802)
+
 ## Key Features and Offerings:
 
 1. Wide Product Selection: JenuxShop offers a diverse range of products, catering to the needs and preferences of Nepali consumers. From electronics and fashion to home appliances and more, customers can find an extensive selection of items at their fingertips.
