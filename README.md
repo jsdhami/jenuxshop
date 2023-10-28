@@ -3,6 +3,22 @@
 
 
 ## Getting Started
+1. Start the development server:
+
+```bash
+python -m venv env
+```
+```bash
+env\Scripts\activate or env\Scripts\activate.bat
+```
+
+```bash
+python -m pip install django
+```
+
+```bash
+python -m django --version
+``` 
 
 To run the project locally and start using jenuxshop, follow these steps:
 After forking repo. in personal github account.........
@@ -25,7 +41,7 @@ cd jenuxshop
 pip install requirements.txt
 ```
 
-4. Start the development server:
+4. Run jenuxshop Project:
 
 ```bash
 python manage.py runserver
