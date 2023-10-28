@@ -123,7 +123,10 @@ STATIC_DIRS = [
     BASE_DIR / "static",
     
 ]
-
+STATICFILES_DIRS = [
+    "jshop/static",
+   
+]
 
 
 
