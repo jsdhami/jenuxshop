@@ -88,8 +88,14 @@ def contact_us(request):
     
     return render(request, 'contact-us.html')
 
-
+@login_required(login_url='login')
+def profile(request):
+    
+    return render(request, 'profile.html')
 
   
     
+def test(request):
+   return render(request, 'test.html')
+
    
