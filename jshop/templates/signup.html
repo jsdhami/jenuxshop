@@ -2,43 +2,181 @@
 
 {% block title %}Sign Up{% endblock title %}
 {% block content %}
-<section id="form"><!--form-->
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-4 col-sm-offset-1">
-				<div class="login-form"><!--login form-->
-					<h2>Login to your account</h2>
-					<form action="#">
-						<input type="text" placeholder="Name" />
-						<input type="email" placeholder="Email Address" />
-						<span>
-							<input type="checkbox" class="checkbox">
-							Keep me signed in
-						</span>
-						<button type="submit" class="btn btn-default">Login</button>
-					</form>
-				</div><!--/login form-->
+
+<div class="container" style="position: relative; border-radius: 5px; padding: 0px 0px 100px 0px">
+	<form action="#" method="POST">
+		{% csrf_token %}
+		<div class="row" style="width: 100%;">
+
+			<div class="col">
+				<h3 style="text-align:center">Sign Up with</h3>
+				<a href="#" class="fb btn">
+					<i class="fa fa-facebook fa-fw"></i> Sign Up with Facebook
+				</a>
+				<a href="#" class="twitter btn">
+					<i class="fa fa-twitter fa-fw"></i> Sign Up with Twitter
+				</a>
+				<a href="#" class="google btn"><i class="fa fa-google fa-fw">
+					</i> Sign Up with Google+
+				</a>
 			</div>
-			<div class="col-sm-1">
+
+			<div class="col">
+				<h3 style="text-align:center">Sign Up</h3>
+				<div class="hide-md-lg">
+					<h4>Or Sign Up manually:</h4>
+				</div>
+
+				<input type="text" name="username" placeholder="Username" required>
+				<input type="email" name="email" placeholder="Email Address" />
+				<input type="password" name="password" placeholder="Password" required>
+				<input type="submit" class="btn">
+			</div>
+			<div class="vl">
 				<h2 class="or">OR</h2>
 			</div>
-			<div class="col-sm-4">
-				<div class="signup-form"><!--sign up form-->
-					<h2>New User Signup!</h2>
-					<form action="#" method="POST">
-						{% csrf_token %}
-						<label for="username">User Name</label>
-						<input type="text" placeholder="username" name="username" />
-						<label for="email">Email Address</label>
-						<input type="email" name="email" placeholder="Email Address" />
-						<label for="password">Password</label>
-						<input type="password" placeholder="Password" name="password" />
-						<button type="submit" class="btn btn-default">Signup</button>
-					</form>
-				</div><!--/sign up form-->
-			</div>
+		</div>
+	</form>
+</div>
+
+<div class="bottom-container">
+	<div class="container">
+		<div class="col" style="width: 35%;">
+			<a href="{% url 'login' %}" style="color:white" class="btn border-2">Log In</a>
+		</div>
+		<div class="col" style="width: 65%;">
+			<a href="{% url 'signup' %}" style="color:white" class="btn">Forgate Password</a>
 		</div>
 	</div>
-</section><!--/form-->
+</div>
+
+<style>
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+
+	/* style inputs and link buttons */
+	input,
+	.btn {
+		width: 100%;
+		padding: 12px;
+		border: none;
+		border-radius: 4px;
+		margin: 5px 0;
+		opacity: 0.85;
+		display: inline-block;
+		font-size: 17px;
+		line-height: 20px;
+		text-decoration: none;
+		/* remove underline from anchors */
+	}
+
+	input:hover,
+	.btn:hover {
+		opacity: 5;
+	}
+
+	/* add appropriate colors to fb, twitter and google buttons */
+	.fb {
+		background-color: #3B5998;
+		color: white;
+	}
+
+	.twitter {
+		background-color: #55ACEE;
+		color: white;
+	}
+
+	.google {
+		background-color: #dd4b39;
+		color: white;
+	}
+
+	/* style the submit button */
+	input[type=submit] {
+		background-color: #04AA6D;
+		color: white;
+		cursor: pointer;
+	}
+
+	input[type=submit]:hover {
+		background-color: #45a049;
+	}
+
+	/* Two-column layout */
+	.col {
+		float: left;
+		width: 50%;
+		margin: auto;
+		padding: 0 50px;
+		margin-top: 6px;
+	}
+
+
+
+	/* Clear floats after the columns */
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+	/* vertical line */
+	.vl {
+		position: absolute;
+		top: 15%;
+		left: 49%;
+		transform: translate(-50%);
+		height: 175px;
+	}
+
+	/* text inside the vertical line */
+	.vl-innertext {
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		background-color: #f1f1f1;
+		border: 1px solid #ccc;
+		border-radius: 50%;
+		padding: 8px 10px;
+	}
+
+	/* hide some text on medium and large screens */
+	.hide-md-lg {
+		display: none;
+	}
+
+	/* bottom container */
+	.bottom-container {
+		text-align: center;
+		background-color: #545151ae;
+		border-radius: 0px 0px 4px 4px;
+	}
+
+
+	/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+	@media screen and (max-width: 650px) {
+		.col {
+			width: 100%;
+			margin-top: 0;
+		}
+
+		/* hide the vertical line */
+		.vl {
+			display: none;
+		}
+
+		/* show the hidden text on small screens */
+		.hide-md-lg {
+			display: block;
+			text-align: center;
+		}
+	}
+</style>
 
 {% endblock %}
